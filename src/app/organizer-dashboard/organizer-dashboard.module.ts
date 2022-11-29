@@ -8,7 +8,7 @@ import { HeaderComponent } from '../header/header.component';
 @NgModule({
   declarations: [
     DashboardHomeComponent,
-    HeaderComponent,
+    
   ],
   imports: [
     CommonModule,

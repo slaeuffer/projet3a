@@ -10,7 +10,7 @@ import { HeaderComponent } from '../header/header.component';
 @NgModule({
   declarations: [
     PublicHomeComponent,
-    HeaderComponent,
+    
   ],
   imports: [
     CommonModule,
