@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
+import { Music } from '../models/music.model';
+import { MusicService } from '../services/music.service';
 
 @Component({
   selector: 'app-feed',
@@ -7,11 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor() { }
+  musics: Music[] = [];
+  constructor(
+    private musicService: MusicService
+  ) { }
 
   ngOnInit(): void {
+    this.musicService.getMusics().subscribe(
+      (data) => this.musics = data
+    )
   }
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
 }
