@@ -14,7 +14,6 @@ export class MusicService {
     ) { }
 
     getMusics() {
-        console.log("rrr");
         const route = `http://localhost:3000/api/musics`;
         return this.http.get<Music[]>(route);
     }
