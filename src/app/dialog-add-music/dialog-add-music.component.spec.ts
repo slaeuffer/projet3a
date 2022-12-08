@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PublicHomeComponent } from './public-home.component';
+import { DialogAddMusicComponent } from './dialog-add-music.component';
 
-describe('PublicHomeComponent', () => {
-  let component: PublicHomeComponent;
-  let fixture: ComponentFixture<PublicHomeComponent>;
+describe('DialogAddMusicComponent', () => {
+  let component: DialogAddMusicComponent;
+  let fixture: ComponentFixture<DialogAddMusicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PublicHomeComponent ]
+      declarations: [ DialogAddMusicComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PublicHomeComponent);
+    fixture = TestBed.createComponent(DialogAddMusicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
