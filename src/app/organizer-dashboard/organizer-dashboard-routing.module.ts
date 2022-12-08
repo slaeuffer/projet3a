@@ -7,7 +7,7 @@ const routes: Routes = [
       component: DashboardHomeComponent,
     }
 ];
-
+ 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
