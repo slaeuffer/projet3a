@@ -13,6 +13,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { OrganizerDashboardModule } from './organizer-dashboard/organizer-dashboard.module';
+import { PublicModule } from './public/public.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    OrganizerDashboardModule,
+    PublicModule,
     MatSidenavModule,
     BrowserAnimationsModule,
     MatListModule,
