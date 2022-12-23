@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/app/models/company.model';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-public-home',
@@ -8,33 +9,13 @@ import { Company } from 'src/app/models/company.model';
 })
 export class PublicHomeComponent implements OnInit {
 
-    company: Company;
-    constructor() { }
+    companies: Company[];
+    constructor(
+        private companyService: CompanyService
+    ) { }
   
   ngOnInit(): void {
-    this.company = {
-        id: 1,
-        name: "Dream Five",
-        address: "5 rue du foot, Marseille",
-        isDeleted: false,
-        rating: 3,
-        reviews: [
-            {
-                id: 1,
-                company: this.company,
-                date: Date.now(),
-                content: "2 terrains fonctionnels..",
-                rating: 3,
-            },
-            {
-                id: 2,
-                company: this.company,
-                date: Date.now(),
-                content: "Bof...",
-                rating: 2,
-            }
-        ]
-    }
+    this.companies = this.companyService.getAllCompanies() 
   }
 
 }

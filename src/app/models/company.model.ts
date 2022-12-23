@@ -8,7 +8,7 @@ export interface Company {
   isDeleted: boolean;
   pictures?: string[];
   rating?: number;
-  reviews: Review[];
+  reviews?: Review[];
 }
 
 export interface Review {
