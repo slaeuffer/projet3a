@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component'
+import { PlanningComponent } from './planning/planning.component';
 
 const routes: Routes = [
     { path: '',
-      component: DashboardHomeComponent,
+      children: [
+        {
+          path: '',
+          component: DashboardHomeComponent,
+        },
+        {
+          path: 'planning',
+          component: PlanningComponent,
+        },
+      ]
     }
 ];
  
