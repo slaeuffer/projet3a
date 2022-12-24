@@ -8,12 +8,15 @@ import {MatCardModule} from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { SideCardComponent } from './components/side-card/side-card.component';
+import { HeaderComponent } from './components/header/header.component';
+import {  MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
   declarations: [
     PublicHomeComponent,
-    SideCardComponent
+    SideCardComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,7 @@ import { SideCardComponent } from './components/side-card/side-card.component';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatToolbarModule,
   ]
 })
 export class PublicModule { }
