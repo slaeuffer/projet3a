@@ -31,7 +31,7 @@ export class UserService {
 
   getUsersByOrga(orgaId: number){
     const route = `${this.configUrl}orga/users/${orgaId}`;
-    return [this.user]
+    return [this.user, this.user]
     // return this.http.get<User>(route);
   }
 }
