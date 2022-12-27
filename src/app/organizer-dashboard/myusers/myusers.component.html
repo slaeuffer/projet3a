@@ -1,0 +1,16 @@
+<h2>Mes utilisateurs</h2>
+<mat-accordion>
+    <mat-expansion-panel hideToggle *ngFor="let user of users">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{user.surname}} {{user.name | uppercase}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{user.role}}
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Informations supplémentaires sur l'utilisateur et boutons pour le modifier </p>
+        <button mat-raised-button color="primary" class="button">Modifier</button>
+    </mat-expansion-panel>
+    
+</mat-accordion>

@@ -6,17 +6,30 @@ import { PlanningComponent } from './planning/planning.component';
 
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { ContactComponent } from './contact/contact.component';
+import { MyusersComponent } from './myusers/myusers.component';
+import { ParamsComponent } from './params/params.component';
+import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
     DashboardHomeComponent,
     PlanningComponent,
+    ContactComponent,
+    MyusersComponent,
+    ParamsComponent,
   ],
   imports: [
     CommonModule,
     OrganizerDashboardRoutingModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatListModule,
+    MatExpansionModule,
   ]
 })
 export class OrganizerDashboardModule { }
