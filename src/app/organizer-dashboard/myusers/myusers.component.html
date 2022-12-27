@@ -1,1 +1,7 @@
-<p>myusers works!</p>
+<h2>Mes utilisateurs</h2>
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let user of users" [value]="user">
+        {{user.surname}} {{user.name | uppercase}} {{user.role}}
+    </mat-list-option>
+  </mat-selection-list>
+  

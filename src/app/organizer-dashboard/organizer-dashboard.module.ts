@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContactComponent } from './contact/contact.component';
 import { MyusersComponent } from './myusers/myusers.component';
 import { ParamsComponent } from './params/params.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ParamsComponent } from './params/params.component';
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatListModule,
   ]
 })
 export class OrganizerDashboardModule { }
