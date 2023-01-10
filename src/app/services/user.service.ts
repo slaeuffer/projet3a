@@ -12,9 +12,9 @@ export class UserService {
 
   user: User = {
     id: 1,
-    name: "User1",
-    surname: "reazr",
-    email: "antoien@rr.fr",
+    name: "Antoine",
+    surname: "Varnerot",
+    email: "antoien@rrcz.fr",
     isDeleted: false,
     role: UserRole.user
 }
@@ -25,7 +25,8 @@ export class UserService {
   ) { }
 
   getUserById(userId: number){
-    const route = `${this.configUrl}users/${userId}`
+    const route = `${this.configUrl}users/${userId}`;
+    return this.user;
     // return this.http.get<User>(route);
   }
 
