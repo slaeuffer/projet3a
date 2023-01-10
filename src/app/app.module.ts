@@ -22,6 +22,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatOptionModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,9 @@ import {MatChipsModule} from '@angular/material/chips';
     HttpClientModule,
     MatDialogModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

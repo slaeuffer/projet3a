@@ -8,9 +8,8 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatChipInputEvent} from '@angular/material/chips';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-export interface Fruit {
-  name: string;
-}
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -35,10 +34,10 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     
   ) { 
-    // this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-    //   startWith(null),
-    //   map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
-    // );
+    this.filteredSports = this.sportCtrl.valueChanges.pipe(
+      startWith(null),
+      map((sport: string | null) => (sport ? this._filter(sport) : this.allsports.slice())),
+    );
 }
 
   ngOnInit(): void {
@@ -50,49 +49,49 @@ export class ProfileComponent implements OnInit {
     this.user = this.userService.getUserById(0);
     this.setControls();
   }
-  // separatorKeysCodes: number[] = [ENTER, COMMA];
-  // fruitCtrl = new FormControl('');
-  // filteredFruits: Observable<string[]>;
-  // fruits: string[] = ['Lemon'];
-  // allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-
-  // @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
-
   
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  sportCtrl = new FormControl();
+  filteredSports: Observable<string[]>;
+  sports: string[] = ['Futsal'];
+  allsports: string[] = ['Futsal', 'Basket', 'Volley'];
 
-  // add(event: MatChipInputEvent): void {
-  //   const value = (event.value || '').trim();
+  @ViewChild('sportInput') sportInput: ElementRef<HTMLInputElement>;
 
-  //   // Add our fruit
-  //   if (value) {
-  //     this.fruits.push(value);
-  //   }
 
-  //   // Clear the input value
-  //   event.chipInput!.clear();
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
 
-  //   this.fruitCtrl.setValue(null);
-  // }
+    // Add our sport
+    if (value) {
+      this.sports.push(value);
+    }
 
-  // remove(fruit: string): void {
-  //   const index = this.fruits.indexOf(fruit);
+    // Clear the input value
+    event.chipInput!.clear();
 
-  //   if (index >= 0) {
-  //     this.fruits.splice(index, 1);
-  //   }
-  // }
+    this.sportCtrl.setValue(null);
+  }
 
-  // selected(event: { option: { viewValue: string; }; }): void {
-  //   this.fruits.push(event.option.viewValue);
-  //   this.fruitInput.nativeElement.value = '';
-  //   this.fruitCtrl.setValue(null);
-  // }
+  remove(sport: string): void {
+    const index = this.sports.indexOf(sport);
 
-  // private _filter(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
+    if (index >= 0) {
+      this.sports.splice(index, 1);
+    }
+  }
 
-  //   return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
-  // }
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.sports.push(event.option.viewValue);
+    this.sportInput.nativeElement.value = '';
+    this.sportCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allsports.filter(sport => sport.toLowerCase().includes(filterValue));
+  }
 
   setControls() {
     this.profileFormGroup.patchValue({

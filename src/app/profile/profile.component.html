@@ -53,28 +53,31 @@
           </div>
         </form>
         <span class="title">Sports préférés</span>
-        <!-- <form>
-            <mat-form-field class="example-chip-list" appearance="fill">
-              <mat-label>Favorite Fruits</mat-label>
-              <mat-chip-grid #chipGrid aria-label="Fruit selection">
-                <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
-                  {{fruit}}
-                  <button matChipRemove [attr.aria-label]="'remove ' + fruit">
-                    <mat-icon>cancel</mat-icon>
-                  </button>
-                </mat-chip-row>
-              </mat-chip-grid>
-              <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
-                [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+        <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-chip-list #chipList aria-label="sport selection">
+              <mat-chip
+                *ngFor="let sport of sports"
+                (removed)="remove(sport)">
+                {{sport}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input
+                placeholder="New sport..."
+                #sportInput
+                [formControl]="sportCtrl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                (matChipInputTokenEnd)="add($event)"/>
-              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-                  {{fruit}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form> -->
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let sport of filteredSports | async" [value]="sport">
+                {{sport}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         <div fxFlex="40"></div>
       </div>
       <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="1rem">
