@@ -1,8 +1,101 @@
-
-<p>Nom</p>
-<p>Varnerot</p>
-<p>Prénom</p>
-<p>Antoine</p>
-<p>Date de naissance</p>
-<p>20/05/1999</p>
-
+<div fxLayout="column" *ngIf="user" class="container" fxLayoutGap="2rem" style="flex-shrink: 0">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+      <div fxLayout="column" fxLayoutGap="0.5rem">
+        <span class="name">{{ user.name }} {{ user.surname }}</span>
+        <span class="position">{{ user.role }}</span>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="1rem" style="flex-shrink: 0">
+      <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="1rem">
+        <div fxLayout="row" fxLayoutAlign="space-between center" style="flex-shrink: 0">
+          <span class="title">Informations</span>
+        </div>
+        <form [formGroup]="profileFormGroup" [ngStyle]="{'height': '100%'}">
+          <div class="card" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1rem">
+            <div>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <span class="field-title">Informations de contact</span>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+            <div fxLayout="column" fxLayoutGap="0.5rem">
+              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+                <mat-form-field floatLabel="never" style="width: 60%">
+                  <mat-icon matPrefix class="icon">email</mat-icon>
+                  <input matInput class="information" formControlName="email"/>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+                <mat-form-field floatLabel="never" style="width: 60%">
+                  <mat-icon matPrefix class="icon">phone</mat-icon>
+                  <input matInput class="information" formControlName="phoneNumber"/>
+                </mat-form-field>
+              </div>
+            </div>
+            <div>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <span class="field-title">Mot de passe</span>
+                <button mat-icon-button>
+                </button>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+            <div fxLayout="column" fxLayoutGap="0.5rem">
+              <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0.5rem">
+                <mat-form-field floatLabel="never" style="width: 60%">
+                  <mat-icon matPrefix class="icon">lock</mat-icon>
+                  <input matInput #passInput class="information" [formControl]="passwordFormControl"/>
+                </mat-form-field>
+                <p class="action-button no-margin-bottom" (click)="onSendResetEmail()">Changer</p>
+              </div>
+            </div>
+            <br>
+          </div>
+        </form>
+        <span class="title">Sports préférés</span>
+        <!-- <form>
+            <mat-form-field class="example-chip-list" appearance="fill">
+              <mat-label>Favorite Fruits</mat-label>
+              <mat-chip-grid #chipGrid aria-label="Fruit selection">
+                <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                  {{fruit}}
+                  <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              </mat-chip-grid>
+              <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
+                [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)"/>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                  {{fruit}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form> -->
+        <div fxFlex="40"></div>
+      </div>
+      <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="1rem">
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title">Terrains favoris</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #placeholderAvatar>
+    <div class="avatar" fxLayoutAlign="center center">
+      <span class="material-icons">person</span>
+    </div>
+  </ng-template>
+  
+  <ng-template #placeholderCompany>
+    <div class="company-image" fxLayoutAlign="center center">
+      <span class="material-icons">home_work</span>
+    </div>
+  </ng-template>
+  
