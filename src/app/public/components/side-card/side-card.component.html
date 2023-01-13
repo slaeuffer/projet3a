@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{company.name}}</mat-card-title>
+        <mat-card-subtitle>{{company.address}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <ng-container *ngFor="let n of [].constructor(company.rating)">
+            <mat-icon>star</mat-icon>
+        </ng-container>       
+        <mat-icon>star_border</mat-icon>
+        <mat-icon>star_border</mat-icon>
+        <button mat-raised-button class="button mx-3">{{company.reviews?.length}} avis</button>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" class="button">Réserver</button>
+    </mat-card-actions>
+</mat-card>

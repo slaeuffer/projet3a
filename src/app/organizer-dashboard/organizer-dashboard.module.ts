@@ -1,18 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { OrganizerDashboardRoutingModule } from './organizer-dashboard-routing.module';
-import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component'; 
-import { HeaderComponent } from '../header/header.component';
+import { PlanningComponent } from './planning/planning.component';
+
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { ContactComponent } from './contact/contact.component';
+import { MyusersComponent } from './myusers/myusers.component';
+import { ParamsComponent } from './params/params.component';
+import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
   declarations: [
     DashboardHomeComponent,
-    HeaderComponent,
+    PlanningComponent,
+    ContactComponent,
+    MyusersComponent,
+    ParamsComponent,
   ],
   imports: [
     CommonModule,
     OrganizerDashboardRoutingModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatListModule,
+    MatExpansionModule,
   ]
 })
 export class OrganizerDashboardModule { }
