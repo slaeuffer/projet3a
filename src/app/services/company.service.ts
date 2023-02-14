@@ -88,4 +88,11 @@ export class CompanyService {
       nb: 17
     }
   }
+  reservateField(userId: number, date: string, hour: string){
+
+  }
+
+  getReviews(companyId: number){
+
+  }
 }
