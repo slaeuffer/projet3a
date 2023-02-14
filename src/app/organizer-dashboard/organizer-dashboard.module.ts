@@ -12,6 +12,9 @@ import { MyusersComponent } from './myusers/myusers.component';
 import { ParamsComponent } from './params/params.component';
 import { MatListModule } from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule,
     MatListModule,
     MatExpansionModule,
+    MatCardModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class OrganizerDashboardModule { }

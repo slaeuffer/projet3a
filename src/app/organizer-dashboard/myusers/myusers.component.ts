@@ -15,7 +15,20 @@ export class MyusersComponent implements OnInit {
 
   users: User[];
 
+  isLoading: boolean;
+  periods: {
+    value: string,
+    viewValue: string,
+  }[];
+
   ngOnInit(): void {
     this.users = this.userService.getUsersByOrga(1);
+    this.isLoading = false;
+    this.periods = [
+      {value: 'janvier', viewValue: 'Janvier'},
+      {value: 'fevrier', viewValue: 'Fevrier'},
+      {value: 'mars', viewValue: 'Mars'},
+    ];
+
   }
 }

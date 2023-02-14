@@ -1,3 +1,153 @@
 .mat-expansion-panel-spacing {
     margin: 0 0 !important;
 }
+
+.page-container {
+    margin-left: auto; /* property that will be kept for upper widths as expected */  
+    margin-right: auto; /* property that will be kept for upper widths as expected */ 
+    &:last-child {
+      margin-bottom: 3.2rem;
+    }
+    width: calc(100% - 2.1rem);
+  
+    &.--no-margin-bottom {
+      margin-bottom: 0rem;
+    }
+  
+    &.--dashboard {
+      width: auto;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      
+    }
+  }
+  
+  .dashboard-card-grid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: .8rem;
+    > :empty {
+      display: none;
+    }
+    > * {
+      margin: .8rem .8rem 0 0;
+    }
+    .full-width {
+      flex: 1;
+    }
+  }
+  
+  .dashboard-card {
+    min-width: 28rem;
+    min-height: 15rem !important;
+    overflow: clip;
+    &.--very-thin {
+      max-width: 28rem;
+    }
+    &.--thin {
+      max-width: 40rem;
+    }
+    &.--fixed-height {
+      height: 21rem;
+    }
+  }
+  
+  .section-container {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__text {
+      font-weight: 600;
+      font-size: 2.4rem;
+    }
+    &__img {
+      opacity: .3;
+      height: 5rem !important;
+      width: 5rem !important;
+      font-size: 5rem;
+      background: gray;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+  
+  .card-legend {
+    display: flex;
+    align-items: center;
+    color: grey;
+    font-size: 1.2rem;
+    font-weight: 400;
+    mat-icon {
+      height: 1.6rem;
+      width: 1.6rem;
+      font-size: 1.6rem;
+    }
+  }
+  
+  .circle-border {
+    $div-height: 7.2rem;
+    $border-thickness: .8rem;
+    border: $border-thickness solid var(--custom-event-color);
+    border-bottom: 0;
+    border-radius: ($div-height + $border-thickness) ($div-height + $border-thickness) 0 0;
+    width: ($div-height * 2);
+    height: $div-height;
+    text-align: center;
+    padding: 3.2rem .8rem 0 .8rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: center;
+    &.--small {
+      .stats__element {
+        color: grey;
+        &__nb {
+          font-size: 1.6rem;
+          
+        }
+        &__name {
+          font-size: 1.2rem;
+          
+        }
+      }
+    }
+    &__element {
+      margin: .8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      &__nb {
+        font-size: 2rem;
+        font-weight: 600;
+        white-space: nowrap;
+        
+        &__total {
+          color: grey;
+          font-size: 1.2rem;
+          font-weight: 400;
+          
+        }
+      }
+      &__name {
+        font-size: 1.4rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        
+      }
+    }
+  }
+  
+  
