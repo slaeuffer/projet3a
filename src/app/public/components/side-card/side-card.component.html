@@ -9,9 +9,9 @@
         </ng-container>       
         <mat-icon>star_border</mat-icon>
         <mat-icon>star_border</mat-icon>
-        <button mat-raised-button class="button mx-3">{{company.reviews?.length}} avis</button>
+        <button mat-raised-button class="button mx-3" (click)="getReviews()">{{company.reviews?.length}} avis</button>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" class="button">Réserver</button>
+        <button mat-raised-button color="primary" class="button" (click)="reservateField()">Réserver</button>
     </mat-card-actions>
 </mat-card>
