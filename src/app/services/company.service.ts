@@ -74,5 +74,18 @@ export class CompanyService {
       ]
     }];
   }
+
+  getRevenuePerPeriod(){
+    return {
+      nb: 400,
+      fees: 150,
+      prepaiment: 250,
+    }
+  }
   
+  getStatsFieldsReservatedPerPeriod(){
+    return {
+      nb: 17
+    }
+  }
 }
