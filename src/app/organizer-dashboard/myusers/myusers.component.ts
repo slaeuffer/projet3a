@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { CompanyService } from 'src/app/services/company.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 export class MyusersComponent implements OnInit {
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private companyService: CompanyService,
   ) { }
 
   users: User[];
@@ -21,6 +23,9 @@ export class MyusersComponent implements OnInit {
     viewValue: string,
   }[];
 
+  revenue: any;
+  fieldsStats: any; 
+
   ngOnInit(): void {
     this.users = this.userService.getUsersByOrga(1);
     this.isLoading = false;
@@ -29,6 +34,11 @@ export class MyusersComponent implements OnInit {
       {value: 'fevrier', viewValue: 'Fevrier'},
       {value: 'mars', viewValue: 'Mars'},
     ];
+
+    //Faire un forkJoin (RxJs) quand il y aura un subscrine
+    this.fieldsStats = this.companyService.getStatsFieldsReservatedPerPeriod();
+
+    this.revenue = this.companyService.getRevenuePerPeriod();
 
   }
 }
