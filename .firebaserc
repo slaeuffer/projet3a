@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "projet3a-d3394": {
+      "hosting": {
+        "projet3a": [
+          "projet3a-d3394"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "projet3a-d3394"
+  }
+}
