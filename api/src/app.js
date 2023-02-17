@@ -23,48 +23,73 @@ app.use((req, res, next) => {
    next();
  });
 
- const musicSchema = mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  author: {
-    type: String,
-    required: true
-  },
-  genre: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  likes: {
+ const companySchema = mongoose.Schema({
+  id: {
     type: Number,
-    required: true
+    required: false
   },
-  dislikes: {
-    type: Number,
-    required: true
-  },
-  imageUrl : {
+  name: {
     type: String,
     required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  isDeleted: {
+    type: String,
+    required: true
+  },
+  pictures: {
+    type: Array,
+    required: false
+  },
+  employees: {
+    type: Array,
+    required: false
+  },
+  rating: {
+    type: Number,
+    required: false
+  },
+  reviews: {
+    type: Array,
+    required: false
   }
 });
 
-const Music = mongoose.model('Music', musicSchema);
+const Company = mongoose.model('Company', companySchema);
 
-app.get('/api/musics', (req, res, next) => {
-  Music.find({}, function(err, items){
+app.post('/api/companies', function(req, res){
+  const company = new Company({
+    "id": req.body.id ? req.body.id : 123,
+    "name": req.body.name, 
+    "address": req.body.address,
+    "isDeleted": req.body.isDeleted,
+    "rating": req.body.rating,
+    // "reviews": req.body.reviews,
+  });
+  company.save( function(err) {
+    if (err) throw err
+  });
+});
+
+app.get('/api/company/:companyId', (req, res, next) => {
+  Company.findById(req.body.params.companyId , function(err, items){
     if (err) throw err;
     res.status(200).json(items);
   })
- });
+ })
 
-app.post('/api/newMusic', function(req, res){
-  const music = new Music({
+app.get('/api/companies', (req, res, next) => {
+  Company.find({}, function(err, items){
+    if (err) throw err;
+    res.status(200).json(items);
+  })
+})
+
+app.post('/api/companies', function(req, res){
+  const company = new Company({
     "title": req.body.title, 
     "author": req.body.author, 
     "genre": req.body.genre,
@@ -73,21 +98,10 @@ app.post('/api/newMusic', function(req, res){
     "dislikes": 0,
     "imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg"
   });
-  music.save( function(err) {
+  company.save( function(err) {
     if (err) throw err
   });
 });
-
-app.get('/api/company/:companyId', (req, res, next) => {
-  Music.find({}, function(err, items){
-    if (err) throw err;
-    res.status(200).json(items);
-  })
- })
-
-app.get('/api/companies', (req, res, next) => {
-  
-})
 
 app.get('/api/revenuePerPeriod', (req, res, next) => {
   

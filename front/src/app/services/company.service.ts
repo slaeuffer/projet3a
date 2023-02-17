@@ -8,6 +8,7 @@ import { Company } from '../models/company.model';
 })
 export class CompanyService {
 
+  private configDomain = environment.apiDomain;
   private configUrl = environment.apiUrl;
 
   constructor(
@@ -15,66 +16,67 @@ export class CompanyService {
   ) { }
 
   getCompanyById(companyId: number){
-    const route = `${this.configUrl}company/${companyId}`;
-    // return this.http.get<Company>(route);
+    const route = `${this.configDomain}${this.configUrl}company/${companyId}`;
+    return this.http.get<Company>(route);
   }
 
   getAllCompanies(){
-    const company = {
-      id: 1,
-      name: "Dream Five",
-      address: "5 rue du foot, Marseille",
-      isDeleted: false,
-      rating: 3,
-      reviews: []
-    };
-    const route = `${this.configUrl}companies/`;
-    // return this.http.get<Company[]>(route);
-    return [{
-      id: 1,
-      name: "Dream Five",
-      address: "5 rue du foot, Marseille",
-      isDeleted: false,
-      rating: 3,
-      reviews: [
-          {
-              id: 1,
-              company: company,
-              date: Date.now(),
-              content: "2 terrains fonctionnels..",
-              rating: 3,
-          },
-          {
-              id: 2,
-              company: company,
-              date: Date.now(),
-              content: "Bof...",
-              rating: 2,
-          }
-      ]
-    },{
-      id: 2,
-      name: "Dream Five",
-      address: "5 rue du foot, Marseille",
-      isDeleted: false,
-      rating: 3,
-      reviews: [
-          {
-              id: 1,
-              company: company,
-              date: Date.now(),
-              content: "2 terrains fonctionnels..",
-              rating: 3,
-          },
-          {
-              id: 2,
-              company: company,
-              date: Date.now(),
-              content: "Bof...",
-              rating: 2,
-          }
-      ]
-    }];
+    // const company = {
+    //   id: 1,
+    //   name: "Dream Five",
+    //   address: "5 rue du foot, Marseille",
+    //   isDeleted: false,
+    //   rating: 3,
+    //   reviews: []
+    // };
+
+    const route = `${this.configDomain}${this.configUrl}companies`;
+    return this.http.get<Company[]>(route);
+    // return [{
+    //   id: 1,
+    //   name: "Dream Five",
+    //   address: "5 rue du foot, Marseille",
+    //   isDeleted: false,
+    //   rating: 3,
+    //   reviews: [
+    //       {
+    //           id: 1,
+    //           company: company,
+    //           date: Date.now(),
+    //           content: "2 terrains fonctionnels..",
+    //           rating: 3,
+    //       },
+    //       {
+    //           id: 2,
+    //           company: company,
+    //           date: Date.now(),
+    //           content: "Bof...",
+    //           rating: 2,
+    //       }
+    //   ]
+    // },{
+    //   id: 2,
+    //   name: "Dream Five",
+    //   address: "5 rue du foot, Marseille",
+    //   isDeleted: false,
+    //   rating: 3,
+    //   reviews: [
+    //       {
+    //           id: 1,
+    //           company: company,
+    //           date: Date.now(),
+    //           content: "2 terrains fonctionnels..",
+    //           rating: 3,
+    //       },
+    //       {
+    //           id: 2,
+    //           company: company,
+    //           date: Date.now(),
+    //           content: "Bof...",
+    //           rating: 2,
+    //       }
+    //   ]
+    // }];
   }
 
   getRevenuePerPeriod(){
