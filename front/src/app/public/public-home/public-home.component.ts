@@ -15,7 +15,9 @@ export class PublicHomeComponent implements OnInit {
     ) { }
   
   ngOnInit(): void {
-    this.companies = this.companyService.getAllCompanies() 
+    this.companyService.getAllCompanies().subscribe(
+      (data) => this.companies = data
+    )
   }
 
 }
