@@ -28,6 +28,8 @@ export class CompanyService {
       rating: 3,
       reviews: []
     };
+    const route = `${this.configUrl}companies/`;
+    // return this.http.get<Company[]>(route);
     return [{
       id: 1,
       name: "Dream Five",

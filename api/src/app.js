@@ -78,4 +78,31 @@ app.post('/api/newMusic', function(req, res){
   });
 });
 
+app.get('/api/company/:companyId', (req, res, next) => {
+  Music.find({}, function(err, items){
+    if (err) throw err;
+    res.status(200).json(items);
+  })
+ })
+
+app.get('/api/companies', (req, res, next) => {
+  
+})
+
+app.get('/api/revenuePerPeriod', (req, res, next) => {
+  
+})
+
+app.get('/api/StatsFieldsReservatedPerPeriod', (req, res, next) => {
+  
+})
+
+app.get('/api/users/:userId', (req, res, next) => {
+  
+})
+
+app.get('/api/orga/users/:orgaId', (req, res, next) => {
+  
+})
+
 export default app;
