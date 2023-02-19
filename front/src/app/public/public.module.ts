@@ -10,13 +10,22 @@ import {MatButtonModule} from '@angular/material/button';
 import { SideCardComponent } from './components/side-card/side-card.component';
 import { HeaderComponent } from './components/header/header.component';
 import {  MatToolbarModule } from '@angular/material/toolbar';
+import { ReviewsDialogComponent } from './components/reviews-dialog/reviews-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommentboxComponent } from './components/commentbox/commentbox.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { ChildboxComponent } from './components/childbox/childbox.component';
 
 
 @NgModule({
   declarations: [
     PublicHomeComponent,
     SideCardComponent,
-    HeaderComponent
+    HeaderComponent,
+    ReviewsDialogComponent,
+    CommentboxComponent,
+    CommentsComponent,
+    ChildboxComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +36,7 @@ import {  MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
+    MatFormFieldModule,
   ]
 })
 export class PublicModule { }
