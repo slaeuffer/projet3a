@@ -45,6 +45,7 @@ export class ChildboxComponent implements OnInit {
       });
       this.userReplycomment.emit(this.replyComment);
       this.deletNo.emit(this.commentNo);
+    return true;
     }
   }
 

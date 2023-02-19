@@ -1,6 +1,6 @@
 <div class="comments" *ngIf="postComment!==undefined">
-    <h6 *ngIf="postComment?.length < 1">No Comments found</h6>
-    <ul *ngIf="postComment?.length>0">
+    <h6 *ngIf="postComment!.length < 1">No Comments found</h6>
+    <ul *ngIf="postComment!.length > 0">
         <li *ngFor="let post of postComment; let i = index;">
             <div class="col-12 col-sm-12 comment-container">
                 <p>{{post.commentTxt}}</p>

@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommentboxComponent } from './components/commentbox/commentbox.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { ChildboxComponent } from './components/childbox/childbox.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ChildboxComponent } from './components/childbox/childbox.component';
     MatButtonModule,
     MatToolbarModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
   ]
 })
 export class PublicModule { }

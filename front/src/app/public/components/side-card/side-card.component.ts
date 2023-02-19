@@ -32,7 +32,7 @@ export class SideCardComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ReviewsDialogComponent, {
       data: {},
-      width: '350px',
+      width: '700px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

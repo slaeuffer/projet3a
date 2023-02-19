@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewsDialogComponent implements OnInit {
 
-  comments: string;
+  comments: object[];
   count: number;
   constructor() { }
 
@@ -17,14 +17,14 @@ export class ReviewsDialogComponent implements OnInit {
   }
 
 
-  receiveComment($event: string) {
+  receiveComment($event: object[]) {
     this.comments = $event;
     this.count = this.comments.length;
     console.log(this.comments.length);
   }
 
 
-  recieveCount($event: string) {
+  recieveCount($event: object[]) {
     this.comments = $event;
     this.count = this.comments.length;
   }

@@ -18,7 +18,7 @@ export class DatacontainerDirective  {
 })
 
 export class CommentsComponent implements OnInit, OnChanges{
-  @Input() postComment: Array<object> = [];
+  @Input() postComment: Array<any> = [];
   @Output() countComments = new EventEmitter();
   public loadComponent = false;
   public commentIndex = 0;
@@ -32,7 +32,9 @@ export class CommentsComponent implements OnInit, OnChanges{
   automatically update the object items for you. */
   @ViewChildren (DatacontainerDirective) entry: QueryList<DatacontainerDirective>;
 
-  constructor(private resolver: ComponentFactoryResolver) { }
+  constructor(private resolver: ComponentFactoryResolver) {
+  
+   }
 
   ngOnInit() {
   }
@@ -50,7 +52,7 @@ export class CommentsComponent implements OnInit, OnChanges{
     this.countComments.emit(this.postComment);
   }
 
-  replyComment(index: string | number) {
+  replyComment(index: number) {
     this.loadComponent = true;
     const myFactory = this.resolver.resolveComponentFactory(ChildboxComponent);
     if (this.entry.toArray()[index].viewContainerRef.length <= 0 ) {
@@ -75,8 +77,8 @@ export class CommentsComponent implements OnInit, OnChanges{
     this.reply = $event;
     console.log($event);
     this.postComment.forEach((element) => {
-      if (element['commentId'] === i) {
-        element['replyComment'].push(...$event);
+      if (element?.commentId === i) {
+        element?.replyComment.push(...$event);
         console.log('Main array after reply comment=>', this.postComment);
       }
     });
