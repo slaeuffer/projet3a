@@ -119,4 +119,19 @@ app.get('/api/orga/users/:orgaId', (req, res, next) => {
   
 })
 
+app.put('/api/company/postComment', function(req, res){
+  const company = new Company({
+    "title": req.body.title, 
+    "author": req.body.author, 
+    "genre": req.body.genre,
+    "description": req.body.description,
+    "likes": 0,
+    "dislikes": 0,
+    "imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+  });
+  company.save( function(err) {
+    if (err) throw err
+  });
+});
+
 export default app;

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter,
   Directive, ViewContainerRef, ViewChildren, QueryList, ComponentFactoryResolver, AfterContentInit} from '@angular/core';
+import { CompanyService } from 'src/app/services/company.service';
 import { ChildboxComponent } from '../childbox/childbox.component';
 
 @Directive({
@@ -32,7 +33,10 @@ export class CommentsComponent implements OnInit, OnChanges{
   automatically update the object items for you. */
   @ViewChildren (DatacontainerDirective) entry: QueryList<DatacontainerDirective>;
 
-  constructor(private resolver: ComponentFactoryResolver) {
+  constructor(
+    private resolver: ComponentFactoryResolver,
+    private companyService: CompanyService,
+    ) {
   
    }
 
@@ -42,6 +46,7 @@ export class CommentsComponent implements OnInit, OnChanges{
 
   ngOnChanges() {
     if (this.postComment !== undefined) {
+      this.companyService.postComment(this.postComment)
       console.log('Main array====>', this.postComment);
     }
   }
