@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PlanningDialogComponent } from '../planning-dialog/planning-dialog.component';
 
 @Component({
   selector: 'app-planning',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanningComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
   
 
   currentDay: Date = new Date();
@@ -46,4 +50,15 @@ export class PlanningComponent implements OnInit {
     this.dataSource = ELEMENT_DATA;
   }
 
+  openCell(){
+    const dialogRef = this.dialog.open(PlanningDialogComponent, {
+      data: {
+      },
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
