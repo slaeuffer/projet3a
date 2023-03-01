@@ -99,4 +99,10 @@ export class CompanyService {
   getReviews(companyId: number){
 
   }
+
+  postComment(comment: any){
+    console.log(comment);
+    const route = `${this.configDomain}${this.configUrl}company/postComment`;
+    this.http.put(route, comment, );
+  }
 }
