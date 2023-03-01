@@ -54,7 +54,7 @@ export class PlanningComponent implements OnInit {
     const dialogRef = this.dialog.open(PlanningDialogComponent, {
       data: {
       },
-      width: '700px',
+      width: '400px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
