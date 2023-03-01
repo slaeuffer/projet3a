@@ -1,0 +1,32 @@
+<mat-form-field appearance="fill">
+    <mat-label>Nom de réservation</mat-label>
+    <input matInput required>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Sport</mat-label>
+    <mat-select required>
+      <mat-option value="one">Futsal</mat-option>
+      <mat-option value="two">Volley</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Heure de début</mat-label>
+  <mat-select required>
+    <mat-option *ngFor="let hour of hours" [value]="hour.value">
+      {{hour.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Heure de fin</mat-label>
+  <mat-select required>
+    <mat-option *ngFor="let hour of hours" [value]="hour.value">
+      {{hour.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Notes</mat-label>
+    <textarea matInput></textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" type="submit">Ajouter</button>

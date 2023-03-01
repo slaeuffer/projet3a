@@ -7,44 +7,31 @@
     </mat-select>
 </mat-form-field>
 
-<div class="row">
-    <div class="col-sm-2">
-        <br>
-        <br>
-        <br>
-        <p class="hour-text">7:00</p>
-        <p class="hour-text">8:00</p>
-        <p class="hour-text">9:00</p>
-        <p class="hour-text">10:00</p>
-        <p class="hour-text">11:00</p>
-        <p class="hour-text">12:00</p>
-        <p class="hour-text">13:00</p>
-        <p class="hour-text">14:00</p>
-        <p class="hour-text">15:00</p>
-        <p class="hour-text">16:00</p>
-        <p class="hour-text">17:00</p>
-        <p class="hour-text">18:00</p>
-        <p class="hour-text">19:00</p>
-        <p class="hour-text">20:00</p>
-        <p class="hour-text">21:00</p>
-        <p class="hour-text">22:00</p>
-        <p class="hour-text">23:00</p>
-    </div>
-    <div class="col-sm-1">l
-    </div>
-    <div class="col-sm-1">m
-    </div>
-    <div class="col-sm-1">m
-    </div>
-    <div class="col-sm-1">j
-    </div>
-    <div class="col-sm-1">v
-    </div>
-    <div class="col-sm-1">s
-    </div>
-    <div class="col-sm-1">d
-    </div>
-    <div class="col-sm-1">
-    </div>
-    <div class="col-sm-2"></div>
-</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="hour">
+    <th mat-header-cell *matHeaderCellDef> Heure </th>
+    <td mat-cell *matCellDef="let element"> {{element.hour}}:00 </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="currentDayString">
+    <th mat-header-cell *matHeaderCellDef>{{ dayBefore | date}} </th>
+    <td mat-cell *matCellDef="let element" [innerHTML]="element.dayBefore" (click)="openCell()"></td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="dayBefore">
+    <th mat-header-cell *matHeaderCellDef> {{ currentDayString | date}} </th>
+    <td mat-cell *matCellDef="let element" [innerHTML]="element.currentDay" (click)="openCell()"></td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="dayAfter">
+    <th mat-header-cell *matHeaderCellDef> {{ dayAfter | date}} </th>
+    <td mat-cell *matCellDef="let element" [innerHTML]="element.dayAfter" (click)="openCell()"></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

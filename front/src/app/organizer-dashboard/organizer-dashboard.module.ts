@@ -15,6 +15,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+import { PlanningDialogComponent } from './planning-dialog/planning-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -24,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ContactComponent,
     MyusersComponent,
     ParamsComponent,
+    PlanningDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +41,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatCardModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class OrganizerDashboardModule { }
