@@ -15,6 +15,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatCardModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
   ]
 })
 export class OrganizerDashboardModule { }
