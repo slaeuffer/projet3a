@@ -16,6 +16,9 @@ import { CommentboxComponent } from './components/commentbox/commentbox.componen
 import { CommentsComponent } from './components/comments/comments.component';
 import { ChildboxComponent } from './components/childbox/childbox.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AskGeolocationModalComponent } from './components/ask-geolocation-modal/ask-geolocation-modal.component';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReviewsDialogComponent,
     CommentboxComponent,
     CommentsComponent,
-    ChildboxComponent
+    ChildboxComponent,
+    AskGeolocationModalComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsApiKey,
+      libraries: ['places', 'geometry']
+    }),
   ]
 })
 export class PublicModule { }
