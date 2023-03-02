@@ -35,6 +35,10 @@ export class PublicHomeComponent implements OnInit {
     @ViewChild('map') map: AgmMap;
     @ViewChild('infowindow') infowindow: google.maps.InfoWindow;
     foundSearches$ = new Observable<any[]>();
+    foundSearches: {
+      lat: number,
+      lng: number,
+    elementNb: number}[] = [];
     searchResults$ = new Observable<any[]>(undefined);
     searchResults: any[];
     searchResultsNb = 0;
@@ -92,7 +96,15 @@ export class PublicHomeComponent implements OnInit {
   
   ngOnInit(): void {
     this.companyService.getAllCompanies().subscribe(
-      (data) => this.companies = data
+      (data) => {
+        this.companies = data;
+        this.companies.forEach(e => this.foundSearches.push( {
+          lat: parseInt(e.coord.lat),
+          lng: parseInt(e.coord.lng),
+          elementNb: 1
+        }))
+        
+      }
     )
     this.activatedRoute.fragment.subscribe((ok: any) => {
       this.mapsApiLoader.load().then(() => {
