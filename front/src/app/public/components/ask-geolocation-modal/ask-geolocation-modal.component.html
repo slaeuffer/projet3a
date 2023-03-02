@@ -1,6 +1,6 @@
 <div class="slider" fxLayout="column">
     <div fxLayout="column" fxLayoutAlign="start start" class="slider-container">
-      <p>La plateforme Race'Chem utilise votre localisation pour fonctionner correctement. Malheureusement, votre navigateur nous en a bloqué l'accès. Merci de saisir une adresse qui servira d'emplacement de base.</p>
+      <p>La plateforme Loc'Out utilise votre localisation pour fonctionner correctement. Malheureusement, votre navigateur nous en a bloqué l'accès. Merci de saisir une adresse qui servira d'emplacement de base.</p>
       <div fxLayout="row" fxLayoutAlign="start center" class="white-input-container">
         <input #addressField matGoogleMapsAutocomplete type="text" (onAutocompleteSelected)="onAddressSelected($event)"
                fxFlex="1 1 auto" placeholder="Saisir l'adresse de votre entreprise" autocomplete="off" (focusin)="addressField.autocomplete = 'off'"/>

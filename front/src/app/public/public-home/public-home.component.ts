@@ -60,6 +60,7 @@ export class PublicHomeComponent implements OnInit {
         private mapsApiLoader: MapsAPILoader,
     ) {
       if (navigator.geolocation) {
+        console.log("nav autorisé")
         this.mapsApiLoader.load().then(() => {
           navigator.geolocation.getCurrentPosition((position) => {
             this.myLocation = {
@@ -71,6 +72,7 @@ export class PublicHomeComponent implements OnInit {
             this.lng = this.myLocation.longitude;
             sessionStorage.setItem('defaultLongitute', this.myLocation.longitude.toString());
           }, error => {
+            console.log("rea")
             if (sessionStorage.getItem('defaultLatitude') && sessionStorage.getItem('defaultLongitute')) {
               this.myLocation = {
                 longitude: parseFloat(sessionStorage.getItem('defaultLongitute') ?? ''),
@@ -92,8 +94,61 @@ export class PublicHomeComponent implements OnInit {
     this.companyService.getAllCompanies().subscribe(
       (data) => this.companies = data
     )
+    this.activatedRoute.fragment.subscribe((ok: any) => {
+      this.mapsApiLoader.load().then(() => {
+        if (ok) {
+          this.onSeeMyCompany();
+        } else {
+          this.launchSearch(true);
+        }
+      });
+    })
   }
-  
+
+  launchSearch(displayMap: boolean) {
+    this.isMapDisplaying = displayMap;
+    this.displayMyPin = false;
+    console.log("launchSearch")
+    // this.foundSearches$ = this.searchResults$.pipe(
+    //   map(searches => searches && searches.length > 0 ?
+    //     searches.map(search => {
+    //       const searchId = search.company ? (search.company.id ? search.company.id : search.company._id) : (search.referent.company.id ? search.referent.company.id : search.referent.company._id);
+    //       return ({
+    //         lat: search.company ? search.company.address.location[1] : search.referent.company.address.location[1],
+    //         lng: search.company ? search.company.address.location[0] : search.referent.company.address.location[0],
+    //         elementNb: searches.filter(filterSearch => (filterSearch.company ? filterSearch.company._id : filterSearch.referent.company._id) === searchId).length,
+    //         img: search.company ? search.company.picture : search.photos[0],
+    //         type: search.company ? ProjectFiltersNeedType.SKILLS : ProjectFiltersNeedType.MATERIALS,
+    //         element: search.company ? searches.filter(skill => skill.company._id === searchId) : search,
+    //         draggable: false,
+    //         isClicked: true,
+    //       });
+    //     }) : []),
+    //   // No filter because duplicates will only stack on top of each others
+    // );
+  }
+
+  onSeeMyCompany() {
+    this.displayMyPin = true;
+    this.lat = 48.876959;
+    this.lng = 2.329984;
+    // const modal = this.dialog.open(CompanyModalComponent, {
+    //   width: '30%',
+    //   height: '100vh',
+    //   position: {right: '0', bottom: '0'},
+    //   autoFocus: false,
+    //   disableClose: false,
+    //   hasBackdrop: true,
+    //   panelClass: 'search-modal',
+    // });
+    // modal.afterClosed().subscribe((redirect) =>
+    // {
+    //   if (redirect) {
+    //     this.router.navigateByUrl('/');
+    //   }
+    // });
+  }
+
   onMouseOver(infoWindow: AgmInfoWindow, gm: any) {
     if (gm.lastOpen && gm.lastOpen.isOpen) {
       gm.lastOpen.close();
