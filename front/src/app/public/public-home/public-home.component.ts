@@ -5,8 +5,9 @@ import { CompanyService } from 'src/app/services/company.service';
 import {AgmInfoWindow, AgmMap, MapsAPILoader} from '@agm/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AskGeolocationModalComponent } from '../components/ask-geolocation-modal/ask-geolocation-modal.component';
+import { CompanyDetailsModalComponent } from '../components/company-details-modal/company-details-modal.component';
 
 export interface Marker {
   lat: number;
@@ -52,7 +53,7 @@ export class PublicHomeComponent implements OnInit {
     isMapDisplaying = true;
     displayMyPin = false;
     filtersType: Observable<any>;
-
+    companyDialogRef: MatDialogRef<CompanyDetailsModalComponent>;
 
     constructor(
         private companyService: CompanyService,
@@ -115,6 +116,22 @@ export class PublicHomeComponent implements OnInit {
         }
       });
     })
+  }
+
+  openLateralModal(search: any): void {
+    if (this.companyDialogRef) {
+      this.companyDialogRef.close();
+    }
+    this.companyDialogRef = this.dialog.open(CompanyDetailsModalComponent, {
+      width: '30%',
+      height: '100vh',
+      position: {right: '0', bottom: '0'},
+      autoFocus: false,
+      disableClose: false,
+      hasBackdrop: true,
+      panelClass: 'search-modal',
+      data: {}
+    });    
   }
 
   launchSearch(displayMap: boolean) {
