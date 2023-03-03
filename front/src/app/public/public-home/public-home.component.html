@@ -12,9 +12,9 @@
       <div class="map" fxFlex="1 1 100%" #map *ngIf="isMapDisplaying">
         <agm-map #map [style.height.px]="map.offsetHeight" [latitude]="lat" [longitude]="lng" [zoom]="6" >
           <agm-marker *ngFor="let search of foundSearches; let i = index" [markerDraggable]="false"
-                      [latitude]="search.lat" [longitude]="search.lng">
-            <agm-info-window #infowindow id="infowindow">
-              <div fxFlexFill fxLayout="row" fxLayoutAlign="center center" class="cursor-pointer info-container"
+                      [latitude]="search.lat" [longitude]="search.lng" (markerClick)="openLateralModal(search)">
+            <agm-info-window #infowindow id="infowindow" [isOpen]="true">
+              <div fxFlexFill fxLayout="row" fxLayoutAlign="center center" class="cursor-pointer info-container" 
                    [ngStyle]="{'background-color': isMapDisplaying ? 'white' : '#f0f1f4'}">
                 <span fxFlex="50" class="nb-map">{{search.elementNb}}</span>
               </div>

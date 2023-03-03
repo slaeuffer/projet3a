@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AskGeolocationModalComponent } from './components/ask-geolocation-modal/ask-geolocation-modal.component';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
+import { CompanyDetailsModalComponent } from './components/company-details-modal/company-details-modal.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { environment } from 'src/environments/environment';
     CommentboxComponent,
     CommentsComponent,
     ChildboxComponent,
-    AskGeolocationModalComponent
+    AskGeolocationModalComponent,
+    CompanyDetailsModalComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ import { environment } from 'src/environments/environment';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
+    MatChipsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
