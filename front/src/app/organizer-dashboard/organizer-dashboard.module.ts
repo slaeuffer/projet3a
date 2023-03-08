@@ -22,6 +22,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     DashboardHomeComponent,
@@ -49,6 +50,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatNativeDateModule,
     MatTabsModule,
     NgxChartsModule,
+    MatGridListModule,
   ]
 })
 export class OrganizerDashboardModule { }
