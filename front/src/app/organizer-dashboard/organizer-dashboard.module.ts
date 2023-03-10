@@ -23,6 +23,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NavComponent } from './nav/nav.component';
 @NgModule({
   declarations: [
     DashboardHomeComponent,
@@ -31,6 +33,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MyusersComponent,
     ParamsComponent,
     PlanningDialogComponent,
+    NavComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +54,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTabsModule,
     NgxChartsModule,
     MatGridListModule,
+    MatSidenavModule,
   ]
 })
 export class OrganizerDashboardModule { }
