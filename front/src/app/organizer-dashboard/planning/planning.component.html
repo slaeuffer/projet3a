@@ -1,3 +1,8 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <app-nav></app-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
 <mat-form-field appearance="fill">
     <mat-label>Terrain 1</mat-label>
     <mat-select>
@@ -35,3 +40,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</mat-sidenav-content>
+</mat-sidenav-container>
