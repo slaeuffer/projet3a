@@ -2,3 +2,45 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$vert-principal-100: #0AE361;
+$vert-principal-90: #23E671;
+$vert-principal-80: #3BE981;
+$vert-principal-70: #54EB90;
+$vert-principal-60: #6CEEA0;
+$vert-principal-50: #84F1B0;
+$vert-principal-40: #9DF4C0;
+$vert-principal-30: #B6F7D0;
+$vert-principal-20: #CEF9DF;
+$vert-principal-10: #E7FCEF;
+
+.vert-principal-100 {
+    background-color: $vert-principal-100;
+}
+.vert-principal-90 {
+    background-color: $vert-principal-90;
+}
+.vert-principal-80 {
+    background-color: $vert-principal-80;
+}
+.vert-principal-70 {
+    background-color: $vert-principal-70;
+}
+.vert-principal-60 {
+    background-color: $vert-principal-60;
+}
+.vert-principal-50 {
+    background-color: $vert-principal-50;
+}
+.vert-principal-40 {
+    background-color: $vert-principal-40;
+}
+.vert-principal-30 {
+    background-color: $vert-principal-30;
+}
+.vert-principal-20 {
+    background-color: $vert-principal-20;
+}
+.vert-principal-10 {
+    background-color: $vert-principal-10;
+}
