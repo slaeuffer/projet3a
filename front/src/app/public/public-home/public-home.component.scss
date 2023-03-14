@@ -1,0 +1,9 @@
+.map{
+    position: relative;
+    height: calc(100vh - 80px);
+  
+    agm-map {
+      height: 100%;
+      width: 100%;
+    }
+  }

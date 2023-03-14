@@ -1,0 +1,14 @@
+<div class="slider" fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="start start" class="slider-container">
+      <p>La plateforme Loc'Out utilise votre localisation pour fonctionner correctement. Malheureusement, votre navigateur nous en a bloqué l'accès. Merci de saisir une adresse qui servira d'emplacement de base.</p>
+      <div fxLayout="row" fxLayoutAlign="start center" class="white-input-container">
+        <input #addressField matGoogleMapsAutocomplete type="text" (onAutocompleteSelected)="onAddressSelected($event)"
+               fxFlex="1 1 auto" placeholder="Saisir l'adresse de votre entreprise" autocomplete="off" (focusin)="addressField.autocomplete = 'off'"/>
+      </div>
+      <mat-hint>Veuillez sélectionner une adresse dans la liste google</mat-hint>
+      <div class="slider-nav" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-flat-button [disabled]="addressFormControl.invalid" (click)="onSubmitPosition()">Confirmer votre position</button>
+      </div>
+    </div>
+</div>
+  
