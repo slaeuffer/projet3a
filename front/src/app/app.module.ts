@@ -52,7 +52,7 @@ import { MatOptionModule } from '@angular/material/core';
     MatInputModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatOptionModule
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
