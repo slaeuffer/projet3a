@@ -1,0 +1,29 @@
+.mat-expansion-panel-spacing {
+    margin: 0 0 !important;
+}
+
+.page-container {
+    margin-left: auto; /* property that will be kept for upper widths as expected */  
+    margin-right: auto; /* property that will be kept for upper widths as expected */ 
+    &:last-child {
+      margin-bottom: 3.2rem;
+    }
+    width: calc(100% - 2.1rem);
+  
+    &.--no-margin-bottom {
+      margin-bottom: 0rem;
+    }
+  
+    &.--dashboard {
+      width: auto;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      
+    }
+  }
+  
+  h1 {
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1em;
+  }
