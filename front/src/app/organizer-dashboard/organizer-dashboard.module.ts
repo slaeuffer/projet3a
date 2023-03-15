@@ -20,11 +20,8 @@ import { PlanningDialogComponent } from './planning-dialog/planning-dialog.compo
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatTabsModule} from '@angular/material/tabs';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import {MatGridListModule} from '@angular/material/grid-list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { NavComponent } from './nav/nav.component';
+
+
 @NgModule({
   declarations: [
     DashboardHomeComponent,
@@ -33,7 +30,6 @@ import { NavComponent } from './nav/nav.component';
     MyusersComponent,
     ParamsComponent,
     PlanningDialogComponent,
-    NavComponent,
   ],
   imports: [
     CommonModule,
@@ -51,10 +47,6 @@ import { NavComponent } from './nav/nav.component';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTabsModule,
-    NgxChartsModule,
-    MatGridListModule,
-    MatSidenavModule,
   ]
 })
 export class OrganizerDashboardModule { }

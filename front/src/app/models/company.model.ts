@@ -9,7 +9,6 @@ export interface Company {
   pictures?: string[];
   rating?: number;
   reviews?: Review[];
-  coord: Coord
 }
 
 export interface Review {
@@ -19,12 +18,6 @@ export interface Review {
     content: string;
     rating: number;
 }
-
-export interface Coord {
-  lat: string;
-  lng: string;
-}
-
 export interface Address {
   libelle: string;
   city: string;

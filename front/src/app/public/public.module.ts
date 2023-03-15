@@ -16,11 +16,6 @@ import { CommentboxComponent } from './components/commentbox/commentbox.componen
 import { CommentsComponent } from './components/comments/comments.component';
 import { ChildboxComponent } from './components/childbox/childbox.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AskGeolocationModalComponent } from './components/ask-geolocation-modal/ask-geolocation-modal.component';
-import { AgmCoreModule } from '@agm/core';
-import { environment } from 'src/environments/environment';
-import { CompanyDetailsModalComponent } from './components/company-details-modal/company-details-modal.component';
-import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -31,9 +26,7 @@ import { MatChipsModule } from '@angular/material/chips';
     ReviewsDialogComponent,
     CommentboxComponent,
     CommentsComponent,
-    ChildboxComponent,
-    AskGeolocationModalComponent,
-    CompanyDetailsModalComponent
+    ChildboxComponent
   ],
   imports: [
     CommonModule,
@@ -44,13 +37,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
-    MatChipsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey,
-      libraries: ['places', 'geometry']
-    }),
   ]
 })
 export class PublicModule { }
