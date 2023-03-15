@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .menu {
+    height: 100px;
+    background-color: #EE82EE;
+    border-bottom : 2px solid #5D6063;
+  }
+  
+  .page {
+    overflow: hidden;             
+    background-color: #EAEDF0;
+  }
+
+  .content {
+    width : 900px;
+    margin: 0 auto;
+    height: 665px;
+    background-color:#EAEDF0;
+  }
+
+  .footer {
+    height: 22px;
+    background-color: #EAEDF0;
+  }
+
+  h1 {
+    font-weight: bold;
+    text-align: center;
+    color: rgb(12, 12, 12);
+    padding: 20px;
+    margin-right: 200px;
+    margin : auto;
+  }
+  
+  p {
+    font-size: larger;
+    padding : 20px;
+  }
+
+  .ensemble {
+    text-align: center;
+    width : 200px;
+    margin : 0 auto;
+  }
+
+  .button1 {
+    width: 200px;
+    color: #FFF;
+    background-color: #EE82EE;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #5D6063;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color : black;
+    float:left;
+  }
+  .button2 {
+  width: 200px;
+  color: #FFF;
+  background-color: #EE82EE;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #5D6063;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color : black;
+  float : right;
+  margin-left: 50px;
+
+  }
+  
+  .droits {
+    font-size: xx-small;
+    font-weight: lighter;
+    padding: 0px;
+    font-style: italic;
+  }
+  .professionnel {
+    float:left;
+    margin-left: 150px;
+  }
+
+  .particulier {
+    float:right;
+    margin-right: 150px;
+  }
+  .accueil {
+    font-size: large;
+    font-style: italic;
+  }

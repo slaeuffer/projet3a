@@ -1,2 +1,42 @@
  
-<p>Présentation générale de Loc'out quand on est pas connecté et qu'on vient sur le site pour la première fois</p>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Petit pierre feuille ciseaux</title>
+        <link rel='stylesheet' href='home.component.scss'/>
+    </head>
+
+    <body>
+        <div class ='page'>
+            <mat-toolbar color="primary">
+                <button mat-icon-button class="example-icon" routerLink="/">Loc'out</button>
+                <span class="example-spacer"></span>
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/profile">
+                    <mat-icon>person</mat-icon>
+                </button>
+                <h1>Bienvenue sur notre projet 3A !</h1>
+            </mat-toolbar>
+            <div class="content">
+                <p class="accueil">Bienvenue ! <br>
+                Vous souhaitez profiter d'un moment sportif avec vos amis et réserver un terrain en toute facilité ?<br>
+                Ou bien vous êtes un professionnel à la recherche d'un logiciel simple et efficace de gestion de terrain ?<br>
+                Vous êtes au bon endroit, laissez vous simplement guider !
+                </p>
+                <div class ="ensemble">
+                    <p>Vous êtes : </p>
+                </div>
+                <div class="professionnel">
+                    <button mat-stroked-button class="button" routerLink="../orga">Professionnel</button>
+                </div>
+                <div class="particulier">
+                    <button mat-stroked-button class="button" routerLink="../public" >Particulier</button>
+                </div>
+            </div>
+            <div class="footer">
+                <hr>
+                <p class="droits">Antoine, Gabriel et Savinien</p>
+            </div>
+        </div>
+    </body>
