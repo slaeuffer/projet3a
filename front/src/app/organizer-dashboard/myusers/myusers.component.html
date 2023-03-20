@@ -1,89 +1,167 @@
-<h2>Mes utilisateurs</h2>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <app-nav></app-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" style="text-align: center;">
+      <mat-tab label="First"> 
+        <mat-form-field>
+          <mat-label>Mois</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab label="Second">
+        <mat-form-field>
+          <mat-label>Début</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Fin</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab label="Third">
+        <mat-form-field>
+          <mat-label>Début</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Fin</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab label="Fourth">
+        <mat-form-field>
+          <mat-label>Début</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Fin</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let period of periods" [value]="period.value">
+              {{period.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+    </mat-tab-group>
 
-<button mat-stroked-button class="button" >1 mois</button>
-<button mat-stroked-button class="button" >3 mois</button>
-<button mat-stroked-button class="button" >6 mois</button>
-<button mat-stroked-button class="button">1 an</button>
-
-<mat-form-field appearance="fill">
-  <mat-label>Janvier</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let period of periods" [value]="period.value">
-      {{period.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-<div class="dashboard-card-grid">
-  <mat-card class="dashboard-card">
-    <div class="section-container">
-      <div class="card-title">
-        <h2 class="card-title__text mr-2">Chiffre d'affaires</h2>
-        <mat-icon class="card-title__img">point_of_sale</mat-icon>
-      </div>
-      <mat-spinner *ngIf="isLoading" color="primary" diameter="40" strokeWidth="4" class="m-auto"></mat-spinner>
-      <div class="stats">
-        <div class="stats__element">
-          <div class="stats__element__nb">
-            {{revenue?.nb}} €
+    <div class="dashboard-card-grid">
+      <mat-card class="dashboard-card">
+        <div class="section-container">
+          <div class="card-title">
+            <h2 class="card-title__text mr-2">Chiffre d'affaires</h2>
+            <mat-icon class="card-title__img">point_of_sale</mat-icon>
           </div>
-          <div class="stats__element__name">
-            CA total depuis le 4/02/2023
+          <mat-spinner *ngIf="isLoading" color="primary" diameter="40" strokeWidth="4" class="m-auto"></mat-spinner>
+          <div class="stats">
+            <div class="stats__element">
+              <div class="stats__element__nb">
+                {{revenue?.nb}} €
+              </div>
+              <div class="stats__element__name">
+                CA total depuis le 4/02/2023
+              </div>
+            </div>
+          </div>
+          <div class="stats --small">
+            <div class="stats__element">
+              <div class="stats__element__nb">
+                {{revenue?.fees}} €
+              </div>
+              <div class="stats__element__name">
+                Commissions
+              </div>
+            </div>
+            <div class="stats__element">
+              <div class="stats__element__nb">
+                {{revenue?.prepaiment}} €
+              </div>
+              <div class="stats__element__name">
+                Prépaiements
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="stats --small">
-        <div class="stats__element">
-          <div class="stats__element__nb">
-            {{revenue?.fees}} €
+      </mat-card>
+      <mat-card class="dashboard-card">
+        <div class="section-container">
+          <div class="card-title">
+            <h2 class="card-title__text mr-2">Nombre de terrains réservés</h2>
+            <mat-icon class="card-title__img">point_of_sale</mat-icon>
           </div>
-          <div class="stats__element__name">
-            Commissions
+          <mat-spinner *ngIf="isLoading" color="primary" diameter="40" strokeWidth="4" class="m-auto"></mat-spinner>
+          <div class="stats">
+            <div class="stats__element">
+              <div class="stats__element__nb">
+                {{fieldsStats?.nb}}
+              </div>
+              <div class="stats__element__name">
+                Nb terrains en 02/2023
+              </div>
+            </div>
           </div>
         </div>
-        <div class="stats__element">
-          <div class="stats__element__nb">
-            {{revenue?.prepaiment}} €
+      </mat-card>
+      <mat-card class="dashboard-card">
+        <div class="section-container">
+          <div class="card-title">
+            <h2 class="card-title__text mr-2">Top utilisateurs</h2>
           </div>
-          <div class="stats__element__name">
-            Prépaiements
-          </div>
+          <mat-spinner *ngIf="isLoading" color="primary" diameter="40" strokeWidth="4" class="m-auto"></mat-spinner>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle *ngFor="let user of users; let index = index">
+              <mat-expansion-panel-header [ngClass]="'vert-principal-'+ (10-index*2)*10">
+              <mat-panel-title>
+                {{user.surname}} {{user.name | uppercase}}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{user.role}}
+              </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>Informations supplémentaires sur l'utilisateur et boutons pour le modifier </p>
+              <button mat-raised-button color="primary" class="button">Modifier</button>
+            </mat-expansion-panel> 
+          </mat-accordion>
         </div>
-      </div>
+      </mat-card>
     </div>
-  </mat-card>
-  <mat-card class="dashboard-card">
-    <div class="section-container">
-      <div class="card-title">
-        <h2 class="card-title__text mr-2">Nombre de terrains réservés</h2>
-        <mat-icon class="card-title__img">point_of_sale</mat-icon>
-      </div>
-      <mat-spinner *ngIf="isLoading" color="primary" diameter="40" strokeWidth="4" class="m-auto"></mat-spinner>
-      <div class="stats">
-        <div class="stats__element">
-          <div class="stats__element__nb">
-            {{fieldsStats?.nb}}
-          </div>
-          <div class="stats__element__name">
-            Nb terrains en 02/2023
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-card>
-</div>
-<h3>Top utilisateurs</h3>
-<mat-accordion>
-  <mat-expansion-panel hideToggle *ngFor="let user of users">
-    <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{user.surname}} {{user.name | uppercase}}
-    </mat-panel-title>
-    <mat-panel-description>
-      {{user.role}}
-    </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>Informations supplémentaires sur l'utilisateur et boutons pour le modifier </p>
-    <button mat-raised-button color="primary" class="button">Modifier</button>
-  </mat-expansion-panel> 
-</mat-accordion>
+    <ngx-charts-line-chart
+        [view]="view"
+        [scheme]="filteredColorScheme"
+        [results]="single"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel">
+    </ngx-charts-line-chart>
+  </mat-sidenav-content>
+</mat-sidenav-container>

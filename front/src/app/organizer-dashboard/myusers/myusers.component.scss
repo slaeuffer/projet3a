@@ -1,5 +1,21 @@
+@import "ngx-chart/styles.scss";
+
+@import "../../../styles.scss";
+
 .mat-expansion-panel-spacing {
     margin: 0 0 !important;
+}
+.example-stretched-tabs{
+  box-shadow: 0 !important;
+  margin-bottom: 3rem;
+}
+
+.userList {
+  background-color: $vert-principal-100;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
 }
 
 .page-container {
@@ -66,14 +82,14 @@
     justify-content: space-between;
     &__text {
       font-weight: 600;
-      font-size: 2.4rem;
+      font-size: 2rem;
     }
     &__img {
       opacity: .3;
       height: 5rem !important;
       width: 5rem !important;
       font-size: 5rem;
-      background: gray;
+      background: $vert-principal-40;
       background-clip: text;
       color: transparent;
     }
@@ -83,12 +99,12 @@
     display: flex;
     align-items: center;
     color: grey;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     font-weight: 400;
     mat-icon {
-      height: 1.6rem;
-      width: 1.6rem;
-      font-size: 1.6rem;
+      height: 1.2rem;
+      width: 1.2rem;
+      font-size: 1.2rem;
     }
   }
   
@@ -113,11 +129,11 @@
       .stats__element {
         color: grey;
         &__nb {
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           
         }
         &__name {
-          font-size: 1.2rem;
+          font-size: 0.8rem;
           
         }
       }
@@ -129,19 +145,19 @@
       align-items: center;
       
       &__nb {
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-weight: 600;
         white-space: nowrap;
         
         &__total {
           color: grey;
-          font-size: 1.2rem;
+          font-size: 0.8rem;
           font-weight: 400;
           
         }
       }
       &__name {
-        font-size: 1.4rem;
+        font-size: 1rem;
         font-weight: 400;
         display: flex;
         align-items: center;
@@ -150,4 +166,18 @@
     }
   }
   
-  
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mat-drawer-side {
+ border-right: solid 0px;
+}
+
+.mat-drawer-container {
+    background-color: white;
+}

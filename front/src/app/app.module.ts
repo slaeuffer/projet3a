@@ -54,7 +54,7 @@ import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
     MatChipsModule,
     MatAutocompleteModule,
     MatOptionModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
