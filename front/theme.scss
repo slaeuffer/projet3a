@@ -1,0 +1,45 @@
+@use '@angular/material' as mat ;
+@include mat.core();
+
+$vert-principal: #0AE361;
+$white: #FFF;
+
+$vert-principal: (
+  100: $vert-principal,
+  200: $vert-principal,
+  300: $vert-principal,
+  400: $vert-principal,
+  500: $vert-principal,
+  600: $vert-principal,
+  700: $vert-principal,
+  800: $vert-principal,
+  900: $vert-principal,
+  A100: $vert-principal,
+  A200: $vert-principal,
+  A400: $vert-principal,
+  A700: $vert-principal,
+  contrast: (
+    100: $white,
+    200: $white,
+    300: $white,
+    400: $white,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+    A100: $white,
+    A200: $white,
+    A400: $white,
+    A700: $white,
+  )
+);
+
+// Define your application's custom theme.
+$primary: mat.define-palette($vert-principal);
+ $accent: mat.define-palette($vert-principal);
+ $warn: mat.define-palette($vert-principal);
+ $custom-theme: mat.define-light-theme($primary, $accent, $warn);
+
+// Include theme styles for Angular Material components.
+@include mat.all-component-themes($custom-theme);
