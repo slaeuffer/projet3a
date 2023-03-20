@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { IsLoggedGuard } from './guards/is-logged.guard';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -23,7 +26,16 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [IsLoggedGuard],
+      },
+      {
+        path: 'signin',
+        component: SigninComponent
+      },
+      {
+        path: 'signup',
+        component: SignupComponent
       }
     ]
   }

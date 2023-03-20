@@ -12,7 +12,7 @@ import { authRoutes } from './routes/auth.routes.js';
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:4200"
 };
 
 mongoose.set('strictQuery', false);

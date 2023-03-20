@@ -25,12 +25,16 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
+    SigninComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
