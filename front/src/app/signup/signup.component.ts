@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class SignupComponent implements OnInit {
   errorMessage = '';
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class SignupComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['/orga']);
       },
       error: err => {
         this.errorMessage = err.error.message;

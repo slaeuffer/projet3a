@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 
@@ -22,6 +23,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class SigninComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
-        this.reloadPage();
+        this.router.navigate(['/orga']);
       },
       error: err => {
         this.errorMessage = err.error.message;
