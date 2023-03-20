@@ -24,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MatOptionModule } from '@angular/material/core';
     MatChipsModule,
     MatAutocompleteModule,
     MatOptionModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
