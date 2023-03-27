@@ -4,21 +4,26 @@
           The actual rendered columns are set as a property on the row definition" -->
 
     <ng-container matColumnDef="col1">
-      <td mat-cell *matCellDef="let element"></td>
+        <th mat-header-cell *matHeaderCellDef>{{dayBefore| date}}</th>
+        <td mat-cell *matCellDef="let element" (click)="selectHour(element.col1)" [class.cell-is-clicked]="reservatedHour == element.col1">{{element.col1}}:00</td>
     </ng-container>
 
     <ng-container matColumnDef="col2">
-      <td mat-cell *matCellDef="let element"></td>
+        <th mat-header-cell *matHeaderCellDef>{{currentDayString | date}}</th>
+        <td mat-cell *matCellDef="let element" (click)="selectHour(element.col2)" [class.cell-is-clicked]="reservatedHour == element.col2">{{element.col2}}:00</td>
     </ng-container>
 
     <ng-container matColumnDef="col3">
-      <td mat-cell *matCellDef="let element"></td>
+        <th mat-header-cell *matHeaderCellDef>{{dayAfter | date}}</th>
+         <td mat-cell *matCellDef="let element" (click)="selectHour(element.col3)" [class.cell-is-clicked]="reservatedHour == element.col3">{{element.col3}}:00</td>
     </ng-container>
 
     <ng-container matColumnDef="col4">
-      <td mat-cell *matCellDef="let element"></td>
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" (click)="selectHour(element.col4)" [class.cell-is-clicked]="reservatedHour == element.col4">{{element.col4}}:00</td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="reservate()">Réserver</button>
