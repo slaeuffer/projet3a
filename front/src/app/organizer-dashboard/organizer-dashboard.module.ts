@@ -25,6 +25,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavComponent } from './nav/nav.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     DashboardHomeComponent,
@@ -55,6 +56,7 @@ import { NavComponent } from './nav/nav.component';
     NgxChartsModule,
     MatGridListModule,
     MatSidenavModule,
+    ReactiveFormsModule,
   ]
 })
 export class OrganizerDashboardModule { }

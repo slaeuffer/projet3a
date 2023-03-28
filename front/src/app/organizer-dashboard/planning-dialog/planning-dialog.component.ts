@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 interface Hour {
   value: string;
@@ -11,10 +13,19 @@ interface Hour {
 })
 export class PlanningDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private reservationService: ReservationService
+  ) { }
+
+  reservatedDate: string = "";
+
+  reservationForm = new FormGroup({
+    reservatedH: new FormControl('')
+  });
 
   ngOnInit(): void {
   }
+
   hours: Hour[] = [
     {value: '7', viewValue: '7:00'},
     {value: '8', viewValue: '8:00'},
@@ -25,5 +36,13 @@ export class PlanningDialogComponent implements OnInit {
     {value: '13', viewValue: '13:00'},
     {value: '14', viewValue: '14:00'},
   ];
+
+  addNewReservation(){
+    if(this.reservationForm.value?.reservatedH){
+      this.reservationService.addNewReservation(this.reservationForm.value?.reservatedH, this.reservatedDate, "companyId").subscribe(
+        (e) => console.log(e)
+      );
+    }
+  }
 
 }
