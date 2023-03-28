@@ -1,13 +1,30 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+const _API = 'http://localhost:3000/api/reservation/';
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  constructor() { }
+  private configUrl = environment.apiUrl;
+  private configDomain = environment.apiDomain;
 
-  addNewReservation(hour: string, idCompany: number | string){
+  constructor(
+    private http: HttpClient
+  ) { }
 
+  addNewReservation(hour: string, date: string, companyId: number | string): Observable<any> {
+    console.log(_API + 'add')
+    return this.http.post(_API + 'add', {
+      hour,
+      date,
+      companyId,
+    }, httpOptions);
   }
 }

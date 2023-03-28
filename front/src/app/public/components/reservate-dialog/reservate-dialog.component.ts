@@ -19,6 +19,7 @@ export class ReservateDialogComponent implements OnInit {
   dayBefore: string = this.currentDay.setDate(this.currentDay.getDate() - 1).toString();
   dayAfter: string = this.currentDay.setDate(this.currentDay.getDate() + 2).toString();
   reservatedHour: string = '';
+  reservatedDate: string = this.currentDayString;
 
   displayedColumns: string[] = ['col1','col2', 'col3', 'col4'];
   dataSource: any=[];
@@ -40,7 +41,9 @@ export class ReservateDialogComponent implements OnInit {
 
   reservate(){
     if(this.reservatedHour){
-      this.reservationService.addNewReservation(this.reservatedHour, this.company.id);
+      this.reservationService.addNewReservation(this.reservatedHour, this.reservatedDate, this.company?.company?._id).subscribe(
+        (e) => console.log(e)
+      );
     }
   }
 }
