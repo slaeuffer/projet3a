@@ -8,6 +8,7 @@ import { env } from '../environnement.js';
 import db from './models/index.js';
 import { userRoutes } from './routes/user.routes.js';
 import { authRoutes } from './routes/auth.routes.js';
+import { reservationRoutes } from './routes/reservation.routes.js';
 
 const app = express();
 
@@ -84,6 +85,7 @@ const Company = mongoose.model('Company', companySchema);
 
 userRoutes(app);
 authRoutes(app);
+reservationRoutes(app);
 
 app.post('/api/companies', function(req, res){
   const company = new Company({

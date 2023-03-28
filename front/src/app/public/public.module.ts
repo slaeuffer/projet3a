@@ -21,6 +21,8 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
 import { CompanyDetailsModalComponent } from './components/company-details-modal/company-details-modal.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { ReservateDialogComponent } from './components/reservate-dialog/reservate-dialog.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { MatChipsModule } from '@angular/material/chips';
     CommentsComponent,
     ChildboxComponent,
     AskGeolocationModalComponent,
-    CompanyDetailsModalComponent
+    CompanyDetailsModalComponent,
+    ReservateDialogComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +50,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatChipsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatTableModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey,
       libraries: ['places', 'geometry']
