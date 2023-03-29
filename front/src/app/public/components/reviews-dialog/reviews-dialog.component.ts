@@ -1,12 +1,13 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { CompanyService } from 'src/app/services/company.service';
 @Component({
   selector: 'app-reviews-dialog',
   templateUrl: './reviews-dialog.component.html',
   styleUrls: ['./reviews-dialog.component.scss']
 })
-export class ReviewsDialogComponent implements OnInit {
+export class ReviewsDialogComponent implements OnInit, OnDestroy {
 
   count: number;
   constructor(
@@ -14,10 +15,11 @@ export class ReviewsDialogComponent implements OnInit {
     private companyService: CompanyService,
   ) {}
   comments: object[]= [];
+  reviewsSub: Subscription;
 
   ngOnInit() {
     this.count = 0;
-    this.companyService.getReviews(this.company.id).subscribe(
+    this.reviewsSub = this.companyService.getReviews(this.company.id).subscribe(
       (e) => {
         this.comments = e;
       }
@@ -35,4 +37,7 @@ export class ReviewsDialogComponent implements OnInit {
     this.count = this.comments.length;
   }
 
+  ngOnDestroy(): void {
+    this.reviewsSub.unsubscribe();
+  }
 }
