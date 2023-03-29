@@ -1,4 +1,4 @@
-import { addNewComment } from "../controllers/comment.controller.js";
+import { addNewComment, getComments } from "../controllers/comment.controller.js";
 
 export function commentRoutes(app) {
   app.use(function(req, res, next) {
@@ -10,5 +10,7 @@ export function commentRoutes(app) {
   });
 
   app.post("/api/comment/add", addNewComment);
+
+  app.get('/api/comment/get', getComments)
 
 };

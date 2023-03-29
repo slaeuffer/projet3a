@@ -97,8 +97,9 @@ export class CompanyService {
 
   }
 
-  getReviews(companyId: number){
-
+  getReviews(companyId: number): Observable<any>{
+    const route = `${this.configDomain}${this.configUrl}comment/get`;
+    return this.http.get(route);
   }
 
   postComment(comment: any): Observable<any>{

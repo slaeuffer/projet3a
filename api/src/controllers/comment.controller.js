@@ -14,3 +14,10 @@ export function addNewComment(req, res) {
     })
     
 }
+
+export function getComments(req, res) {
+    Comment.find({}, function(err, items){
+        if (err) throw err;
+        res.status(200).json(items);
+    })
+}
