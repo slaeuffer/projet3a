@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PlanningDialogComponent } from './planning-dialog.component';
 
 describe('PlanningDialogComponent', () => {
@@ -8,6 +8,7 @@ describe('PlanningDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ PlanningDialogComponent ]
     })
     .compileComponents();

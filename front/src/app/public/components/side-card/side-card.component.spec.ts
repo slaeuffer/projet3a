@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SideCardComponent } from './side-card.component';
 
 describe('SideCardComponent', () => {
@@ -8,7 +8,8 @@ describe('SideCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SideCardComponent ]
+      declarations: [ SideCardComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 
