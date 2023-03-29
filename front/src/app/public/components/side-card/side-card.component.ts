@@ -31,6 +31,7 @@ export class SideCardComponent implements OnInit {
   }
     
   openReviewDialog(): void {
+    console.log(this.company)
     const dialogRef = this.dialog.open(ReviewsDialogComponent, {
       data: {
         reviews: this.company?.reviews,

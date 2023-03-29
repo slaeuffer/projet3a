@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Company } from '../models/company.model';
 
@@ -96,13 +97,13 @@ export class CompanyService {
 
   }
 
-  getReviews(companyId: number){
-
+  getReviews(companyId: number): Observable<any>{
+    const route = `${this.configDomain}${this.configUrl}comment/get`;
+    return this.http.get(route);
   }
 
-  postComment(comment: any){
-    console.log(comment);
-    const route = `${this.configDomain}${this.configUrl}company/postComment`;
-    this.http.put(route, comment, );
+  postComment(comment: any): Observable<any>{
+    const route = `${this.configDomain}${this.configUrl}comment/add`;
+    return this.http.post(route, comment);
   }
 }

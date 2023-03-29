@@ -9,6 +9,7 @@ import db from './models/index.js';
 import { userRoutes } from './routes/user.routes.js';
 import { authRoutes } from './routes/auth.routes.js';
 import { reservationRoutes } from './routes/reservation.routes.js';
+import { commentRoutes } from './routes/comment.routes.js';
 
 const app = express();
 
@@ -86,6 +87,7 @@ const Company = mongoose.model('Company', companySchema);
 userRoutes(app);
 authRoutes(app);
 reservationRoutes(app);
+commentRoutes(app);
 
 app.post('/api/companies', function(req, res){
   const company = new Company({
@@ -145,21 +147,6 @@ app.get('/api/users/:userId', (req, res, next) => {
 app.get('/api/orga/users/:orgaId', (req, res, next) => {
   
 })
-
-app.put('/api/company/postComment', function(req, res){
-  const company = new Company({
-    "title": req.body.title, 
-    "author": req.body.author, 
-    "genre": req.body.genre,
-    "description": req.body.description,
-    "likes": 0,
-    "dislikes": 0,
-    "imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg"
-  });
-  company.save( function(err) {
-    if (err) throw err
-  });
-});
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {

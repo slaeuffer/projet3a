@@ -1,9 +1,9 @@
 import { Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Company } from 'src/app/models/company.model';
 import { CompanyService } from 'src/app/services/company.service';
 import {AgmInfoWindow, AgmMap, MapsAPILoader} from '@agm/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AskGeolocationModalComponent } from '../components/ask-geolocation-modal/ask-geolocation-modal.component';
@@ -25,7 +25,7 @@ export interface Marker {
   templateUrl: './public-home.component.html',
   styleUrls: ['./public-home.component.scss']
 })
-export class PublicHomeComponent implements OnInit {
+export class PublicHomeComponent implements OnInit, OnDestroy {
 
     companies: Company[];
 
@@ -55,6 +55,9 @@ export class PublicHomeComponent implements OnInit {
     filtersType: Observable<any>;
     companyDialogRef: MatDialogRef<CompanyDetailsModalComponent>;
 
+    companiesSub: Subscription;
+    mapSub: Subscription;
+
     constructor(
         private companyService: CompanyService,
         private activatedRoute: ActivatedRoute,
@@ -77,7 +80,6 @@ export class PublicHomeComponent implements OnInit {
             this.lng = this.myLocation.longitude;
             sessionStorage.setItem('defaultLongitute', this.myLocation.longitude.toString());
           }, error => {
-            console.log("rea")
             if (sessionStorage.getItem('defaultLatitude') && sessionStorage.getItem('defaultLongitute')) {
               this.myLocation = {
                 longitude: parseFloat(sessionStorage.getItem('defaultLongitute') ?? ''),
@@ -96,7 +98,7 @@ export class PublicHomeComponent implements OnInit {
      }
   
   ngOnInit(): void {
-    this.companyService.getAllCompanies().subscribe(
+    this.companiesSub = this.companyService.getAllCompanies().subscribe(
       (data) => {
         this.companies = data;
         this.companies.forEach(e => this.foundSearches.push( {
@@ -107,7 +109,7 @@ export class PublicHomeComponent implements OnInit {
         
       }
     )
-    this.activatedRoute.fragment.subscribe((ok: any) => {
+    this.mapSub = this.activatedRoute.fragment.subscribe((ok: any) => {
       this.mapsApiLoader.load().then(() => {
         if (ok) {
           this.onSeeMyCompany();
@@ -210,6 +212,11 @@ export class PublicHomeComponent implements OnInit {
         dialogRef.close();
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.companiesSub.unsubscribe();
+    this.mapSub.unsubscribe();
   }
 
 }

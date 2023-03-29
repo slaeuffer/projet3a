@@ -1,36 +1,43 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { CompanyService } from 'src/app/services/company.service';
 @Component({
   selector: 'app-reviews-dialog',
   templateUrl: './reviews-dialog.component.html',
   styleUrls: ['./reviews-dialog.component.scss']
 })
-export class ReviewsDialogComponent implements OnInit {
+export class ReviewsDialogComponent implements OnInit, OnDestroy {
 
-  comments: object[];
   count: number;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public company: any,
+    private companyService: CompanyService,
   ) {}
-
+  comments: object[]= [];
+  reviewsSub: Subscription;
 
   ngOnInit() {
     this.count = 0;
-    console.log("data",this.data);
+    this.reviewsSub = this.companyService.getReviews(this.company.id).subscribe(
+      (e) => {
+        this.comments = e;
+      }
+    )
+    this.count = this.comments.length;
   }
-
 
   receiveComment($event: object[]) {
-    this.comments = $event;
+    this.comments= this.comments.concat($event);
     this.count = this.comments.length;
   }
-
 
   recieveCount($event: object[]) {
-    this.comments = $event;
+    this.comments= this.comments.concat($event);
     this.count = this.comments.length;
   }
 
-
-
+  ngOnDestroy(): void {
+    this.reviewsSub.unsubscribe();
+  }
 }

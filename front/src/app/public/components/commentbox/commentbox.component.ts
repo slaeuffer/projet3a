@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CompanyService } from 'src/app/services/company.service';
 
 
 @Component({
@@ -17,7 +18,10 @@ export class CommentboxComponent implements OnInit {
   @Output() usercomment = new EventEmitter();
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private companyService: CompanyService,
+    ) { }
 
 
   ngOnInit() {
@@ -38,14 +42,24 @@ export class CommentboxComponent implements OnInit {
     if (this.commentForm.invalid) {
       return false;
     } else {
-      this.commentInfo.push({
+      const comment = {
         commentId : this.id++,
         currentDate : new Date(),
         commentTxt: this.commentForm.controls['comment'].value,
         replyComment: []
-      });
-      this.usercomment.emit(this.commentInfo);
-      return true;
+      }
+      return this.companyService.postComment(comment).subscribe(
+        (e) => {
+          this.commentInfo.push(comment);
+          this.usercomment.emit(this.commentInfo);
+          return true;
+        },
+        (err) => {
+          console.log(err);
+          return false
+        }
+        
+      );
     }
   }
 
