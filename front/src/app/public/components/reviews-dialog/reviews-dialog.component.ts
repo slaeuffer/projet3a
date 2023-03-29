@@ -7,27 +7,32 @@ import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class ReviewsDialogComponent implements OnInit {
 
-  comments: object[];
   count: number;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-
+  comments: object[]= [];
 
   ngOnInit() {
     this.count = 0;
-    console.log("data",this.data);
+    this.data.reviews.forEach((element: { content: any; date: any; }) => {
+      this.comments.push({
+        commentTxt: element.content,
+        currentDate: element.date
+      })
+    });
   }
 
 
   receiveComment($event: object[]) {
-    this.comments = $event;
+    console.log($event)
+    this.comments= this.comments.concat($event);
     this.count = this.comments.length;
   }
 
 
   recieveCount($event: object[]) {
-    this.comments = $event;
+    this.comments= this.comments.concat($event);
     this.count = this.comments.length;
   }
 

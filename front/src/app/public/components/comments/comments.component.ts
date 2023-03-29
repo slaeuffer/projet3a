@@ -47,13 +47,11 @@ export class CommentsComponent implements OnInit, OnChanges{
   ngOnChanges() {
     if (this.postComment !== undefined) {
       this.companyService.postComment(this.postComment)
-      console.log('Main array====>', this.postComment);
     }
   }
 
   removeComment(no: number) {
     this.postComment.splice(no, 1);
-    console.log('After remove array====>', this.postComment);
     this.countComments.emit(this.postComment);
   }
 
@@ -66,7 +64,6 @@ export class CommentsComponent implements OnInit, OnChanges{
       myRef.changeDetectorRef.detectChanges();
       myRef.instance.userReplycomment.subscribe(
         data => {
-          console.log('Piyali=>', data);
           this.receiveReplyComment(data, index);
         }
       );
