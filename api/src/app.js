@@ -10,6 +10,7 @@ import { userRoutes } from './routes/user.routes.js';
 import { authRoutes } from './routes/auth.routes.js';
 import { reservationRoutes } from './routes/reservation.routes.js';
 import { commentRoutes } from './routes/comment.routes.js';
+import { companyRoutes } from './routes/company.routes.js';
 
 const app = express();
 
@@ -47,90 +48,11 @@ app.use((req, res, next) => {
   })
 );
 
- const companySchema = mongoose.Schema({
-  id: {
-    type: Number,
-    required: false
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  address: {
-    type: String,
-    required: true
-  },
-  isDeleted: {
-    type: String,
-    required: true
-  },
-  pictures: {
-    type: Array,
-    required: false
-  },
-  employees: {
-    type: Array,
-    required: false
-  },
-  rating: {
-    type: Number,
-    required: false
-  },
-  reviews: {
-    type: Array,
-    required: false
-  }
-});
-
-const Company = mongoose.model('Company', companySchema);
-
 userRoutes(app);
 authRoutes(app);
 reservationRoutes(app);
 commentRoutes(app);
-
-app.post('/api/companies', function(req, res){
-  const company = new Company({
-    "id": req.body.id ? req.body.id : 123,
-    "name": req.body.name, 
-    "address": req.body.address,
-    "isDeleted": req.body.isDeleted,
-    "rating": req.body.rating,
-    // "reviews": req.body.reviews,
-  });
-  company.save( function(err) {
-    if (err) throw err
-  });
-});
-
-app.get('/api/company/:companyId', (req, res, next) => {
-  Company.findById(req.body.params.companyId , function(err, items){
-    if (err) throw err;
-    res.status(200).json(items);
-  })
- })
-
-app.get('/api/companies', (req, res, next) => {
-  Company.find({}, function(err, items){
-    if (err) throw err;
-    res.status(200).json(items);
-  })
-})
-
-app.post('/api/companies', function(req, res){
-  const company = new Company({
-    "title": req.body.title, 
-    "author": req.body.author, 
-    "genre": req.body.genre,
-    "description": req.body.description,
-    "likes": 0,
-    "dislikes": 0,
-    "imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg"
-  });
-  company.save( function(err) {
-    if (err) throw err
-  });
-});
+companyRoutes(app);
 
 app.get('/api/revenuePerPeriod', (req, res, next) => {
   
