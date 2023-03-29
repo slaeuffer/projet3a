@@ -21,6 +21,7 @@ export class ReviewsDialogComponent implements OnInit {
         currentDate: element.date
       })
     });
+    this.count = this.comments.length;
   }
 
 
