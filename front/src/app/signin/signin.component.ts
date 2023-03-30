@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
@@ -20,6 +21,10 @@ export class SigninComponent implements OnInit {
   roles: string[] = [];
 
   hide = true;
+
+  usernameFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [Validators.required]);
+
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
@@ -34,7 +39,8 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
+    const  username = this.usernameFormControl.value ?? "";
+    const password = this.passwordFormControl.value ?? "";
 
     this.authService.login(username, password).subscribe({
       next: data => {

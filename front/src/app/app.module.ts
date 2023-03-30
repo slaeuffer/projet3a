@@ -59,6 +59,7 @@ import { SignupComponent } from './signup/signup.component';
     MatAutocompleteModule,
     MatOptionModule,
     MatToolbarModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -17,7 +18,10 @@ export class SignupComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  usernameFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [Validators.required]);
+  
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -27,7 +31,9 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
+    const username = this.usernameFormControl.value ?? "";
+    const email = this.emailFormControl.value ?? "";
+    const password = this.passwordFormControl.value ?? "";
 
     this.authService.register(username, email, password).subscribe({
       next: data => {
