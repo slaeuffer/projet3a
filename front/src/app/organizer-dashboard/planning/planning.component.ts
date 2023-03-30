@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { ReservationService } from 'src/app/services/reservation.service';
 import { PlanningDialogComponent } from '../planning-dialog/planning-dialog.component';
 
 @Component({
@@ -7,12 +9,14 @@ import { PlanningDialogComponent } from '../planning-dialog/planning-dialog.comp
   templateUrl: './planning.component.html',
   styleUrls: ['./planning.component.scss']
 })
-export class PlanningComponent implements OnInit {
+export class PlanningComponent implements OnInit, OnDestroy {
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private reservationService: ReservationService,
   ) { }
   
+  reservationSub: Subscription;
 
   currentDay: Date = new Date();
   currentDayString = this.currentDay.toDateString();
@@ -48,6 +52,10 @@ export class PlanningComponent implements OnInit {
       {hour: 23, dayBefore: '', currentDay: '', dayAfter: ''},
     ];
     this.dataSource = ELEMENT_DATA;
+
+    this.reservationSub = this.reservationService.getReservation('1').subscribe(
+      (e) => console.log(e)
+    )
   }
 
   openCell(){
@@ -60,5 +68,9 @@ export class PlanningComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  ngOnDestroy(): void {
+    this.reservationSub.unsubscribe();
   }
 }

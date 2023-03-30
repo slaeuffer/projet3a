@@ -14,3 +14,10 @@ export function addNewReservation(req, res) {
     })
     
 }
+
+export function getReservationByCompanyId(req, res) {
+    Reservation.find({companyId: req.params.companyId} , function(err, items){
+        if (err) throw err;
+        res.status(200).json(items);
+    })
+}
