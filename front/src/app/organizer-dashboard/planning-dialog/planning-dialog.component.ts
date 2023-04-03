@@ -39,7 +39,7 @@ export class PlanningDialogComponent implements OnInit {
 
   addNewReservation(){
     if(this.reservationForm.value?.reservatedH){
-      this.reservationService.addNewReservation(this.reservationForm.value?.reservatedH, this.reservatedDate, "companyId").subscribe(
+      this.reservationService.addNewReservation(this.reservationForm.value?.reservatedH, this.reservatedDate, "1234314321114").subscribe(
         (e) => console.log(e)
       );
     }

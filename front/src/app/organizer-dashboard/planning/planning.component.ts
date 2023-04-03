@@ -35,15 +35,15 @@ export class PlanningComponent implements OnInit, OnDestroy {
     ];
     const ELEMENT_DATA: {}[] = [
       {hour: 8, dayBefore: '', currentDay: '', dayAfter: ''},
-      {hour: 9, dayBefore: '', currentDay: '<div style="background-color: red">x</div>', dayAfter: ''},
-      {hour: 10, dayBefore: '', currentDay: '<div style="background-color: red">x</div>', dayAfter: ''},
+      {hour: 9, dayBefore: '', currentDay: '', dayAfter: ''},
+      {hour: 10, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 11, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 12, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 13, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 14, dayBefore: '', currentDay: '', dayAfter: ''},
-      {hour: 15, dayBefore: '<div style="background-color: red">x</div>', currentDay: '', dayAfter: ''},
-      {hour: 16, dayBefore: '<div style="background-color: red">x</div>', currentDay: '', dayAfter: ''},
-      {hour: 17, dayBefore: '<div style="background-color: red">x</div>', currentDay: '', dayAfter: ''},
+      {hour: 15, dayBefore: '', currentDay: '', dayAfter: ''},
+      {hour: 16, dayBefore: '', currentDay: '', dayAfter: ''},
+      {hour: 17, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 18, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 19, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 20, dayBefore: '', currentDay: '', dayAfter: ''},
@@ -53,8 +53,13 @@ export class PlanningComponent implements OnInit, OnDestroy {
     ];
     this.dataSource = ELEMENT_DATA;
 
-    this.reservationSub = this.reservationService.getReservation('1').subscribe(
-      (e) => console.log(e)
+    this.reservationSub = this.reservationService.getReservation('1234314321114').subscribe(
+      (reservations) => {
+        reservations.forEach((resa: { hour: number; }) => {
+          this.dataSource[resa.hour - 8].currentDay = "x";
+        });
+        
+      }
     )
   }
 
