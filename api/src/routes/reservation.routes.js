@@ -1,4 +1,4 @@
-import { addNewReservation } from "../controllers/reservation.controller.js";
+import { addNewReservation, getReservationByCompanyId } from "../controllers/reservation.controller.js";
 
 export function reservationRoutes(app) {
   app.use(function(req, res, next) {
@@ -10,5 +10,7 @@ export function reservationRoutes(app) {
   });
 
   app.post("/api/reservation/add", addNewReservation);
+
+  app.get("/api/reservation/get/:companyId", getReservationByCompanyId);
 
 };

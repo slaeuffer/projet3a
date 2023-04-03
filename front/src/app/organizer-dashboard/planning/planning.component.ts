@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { ReservationService } from 'src/app/services/reservation.service';
 import { PlanningDialogComponent } from '../planning-dialog/planning-dialog.component';
 
 @Component({
@@ -7,12 +9,14 @@ import { PlanningDialogComponent } from '../planning-dialog/planning-dialog.comp
   templateUrl: './planning.component.html',
   styleUrls: ['./planning.component.scss']
 })
-export class PlanningComponent implements OnInit {
+export class PlanningComponent implements OnInit, OnDestroy {
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private reservationService: ReservationService,
   ) { }
   
+  reservationSub: Subscription;
 
   currentDay: Date = new Date();
   currentDayString = this.currentDay.toDateString();
@@ -31,15 +35,15 @@ export class PlanningComponent implements OnInit {
     ];
     const ELEMENT_DATA: {}[] = [
       {hour: 8, dayBefore: '', currentDay: '', dayAfter: ''},
-      {hour: 9, dayBefore: '', currentDay: '<div style="background-color: red">x</div>', dayAfter: ''},
-      {hour: 10, dayBefore: '', currentDay: '<div style="background-color: red">x</div>', dayAfter: ''},
+      {hour: 9, dayBefore: '', currentDay: '', dayAfter: ''},
+      {hour: 10, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 11, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 12, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 13, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 14, dayBefore: '', currentDay: '', dayAfter: ''},
-      {hour: 15, dayBefore: '<div style="background-color: red">x</div>', currentDay: '', dayAfter: ''},
-      {hour: 16, dayBefore: '<div style="background-color: red">x</div>', currentDay: '', dayAfter: ''},
-      {hour: 17, dayBefore: '<div style="background-color: red">x</div>', currentDay: '', dayAfter: ''},
+      {hour: 15, dayBefore: '', currentDay: '', dayAfter: ''},
+      {hour: 16, dayBefore: '', currentDay: '', dayAfter: ''},
+      {hour: 17, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 18, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 19, dayBefore: '', currentDay: '', dayAfter: ''},
       {hour: 20, dayBefore: '', currentDay: '', dayAfter: ''},
@@ -48,6 +52,15 @@ export class PlanningComponent implements OnInit {
       {hour: 23, dayBefore: '', currentDay: '', dayAfter: ''},
     ];
     this.dataSource = ELEMENT_DATA;
+
+    this.reservationSub = this.reservationService.getReservation('1234314321114').subscribe(
+      (reservations) => {
+        reservations.forEach((resa: { hour: number; }) => {
+          this.dataSource[resa.hour - 8].currentDay = "x";
+        });
+        
+      }
+    )
   }
 
   openCell(){
@@ -60,5 +73,9 @@ export class PlanningComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  ngOnDestroy(): void {
+    this.reservationSub.unsubscribe();
   }
 }

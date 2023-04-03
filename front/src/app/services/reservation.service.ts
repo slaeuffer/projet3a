@@ -27,4 +27,8 @@ export class ReservationService {
       companyId,
     }, httpOptions);
   }
+
+  getReservation(companyId: number | string): Observable<any> {
+    return this.http.get<any[]>(_API + `get/${companyId}`);
+  }
 }
