@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { PlanningComponent } from './planning.component';
 
@@ -8,7 +9,10 @@ describe('PlanningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlanningComponent ]
+      declarations: [ PlanningComponent ],
+      imports: [
+        MatDialogModule,
+      ]
     })
     .compileComponents();
 

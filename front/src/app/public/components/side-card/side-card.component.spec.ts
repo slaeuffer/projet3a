@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SideCardComponent } from './side-card.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('SideCardComponent', () => {
   let component: SideCardComponent;
@@ -8,7 +9,11 @@ describe('SideCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SideCardComponent ]
+      declarations: [ SideCardComponent ],
+      imports: [
+        HttpClientTestingModule,
+        MatDialogModule,
+      ]
     })
     .compileComponents();
 

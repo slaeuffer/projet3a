@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReservateDialogComponent } from './reservate-dialog.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ReservateDialogComponent', () => {
   let component: ReservateDialogComponent;
@@ -8,7 +9,15 @@ describe('ReservateDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReservateDialogComponent ]
+      declarations: [ ReservateDialogComponent ],
+      imports: [ 
+        MatDialogModule,
+        HttpClientTestingModule,
+      ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ]
     })
     .compileComponents();
 
