@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: '/api/',
-  apiDomain: 'http://localhost:3000',
+  apiDomain: 'http://node.hysope.ovh1.ec-m.fr:10429',
   googleMapsApiKey: 'AIzaSyATx4yofzKnCvYx0VvINtTwIapY65uuwJA',
 };
 
