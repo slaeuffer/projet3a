@@ -1,6 +1,6 @@
 export var single = [
     {
-      "name": "Karthikeyan",
+      "name": "CA",
       "series": [
         {
           "name": "2016",
@@ -21,7 +21,7 @@ export var single = [
       ],
     },
     {
-      "name": "Gnana Prakasam",
+      "name": "Nombre de visiteurs",
       "series": [
         {
           "name": "2016",
@@ -42,7 +42,7 @@ export var single = [
       ],
     },
     {
-      "name": "Kumaresan",
+      "name": "Annulations",
       "series": [
         {
           "name": "2016",

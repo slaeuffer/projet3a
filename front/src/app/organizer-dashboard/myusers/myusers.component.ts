@@ -51,6 +51,8 @@ export class MyusersComponent implements OnInit {
       {value: 'janvier', viewValue: 'Janvier'},
       {value: 'fevrier', viewValue: 'Fevrier'},
       {value: 'mars', viewValue: 'Mars'},
+      {value: 'avril', viewValue: 'Avril'},
+      {value: 'mai', viewValue: 'Mai'},
     ];
 
     //Faire un forkJoin (RxJs) quand il y aura un subscrine
